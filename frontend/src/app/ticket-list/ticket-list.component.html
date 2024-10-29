@@ -1,0 +1,55 @@
+<div>
+  <h2 class="text-2xl font-bold mb-4">Ticket List</h2>
+
+  <table class="table-auto min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+    <thead>
+      <tr class="bg-slate-800 text-left text-white">
+        <th class="p-4 border-b font-semibold">ID</th>
+        <th class="p-4 border-b font-semibold">Title</th>
+        <th class="p-4 border-b font-semibold">Description</th>
+        <th class="p-4 border-b font-semibold">Status</th>
+        <th class="p-4 border-b font-semibold">Created At</th>
+        <th class="p-4 border-b font-semibold">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ticket of tickets" class="hover:bg-gray-100">
+        <td class="p-4 border-b">{{ ticket.id }}</td>
+        <td class="p-4 border-b">{{ ticket.title }}</td>
+        <td class="p-4 border-b">{{ ticket.description }}</td>
+        <td class="p-4 border-b">{{ ticket.status }}</td>
+        <td class="p-4 border-b">{{ ticket.created | date:'short' }}</td>
+        <td class="p-4 border-b">
+          <button
+            *ngIf="ticket.status !== 'RESOLVED'"
+            (click)="markResolved(ticket.id)"
+            class="resolved bg-green-500 text-white px-2 py-1 mr-2 rounded hover:bg-green-600">
+            Resolve
+          </button>
+          <button (click)="deleteTicket(ticket.id)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 float-end">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination Controls -->
+  <div class="mt-4 flex space-x-10 justify-center items-center">
+    <button
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+      class="bg-slate-800 text-white px-4 py-2 mr-2 rounded disabled:opacity-75">
+      Previous
+    </button>
+
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+      class="bg-slate-800 text-white px-4 py-2 ml-2 rounded disabled:opacity-75">
+      Next
+    </button>
+  </div>
+</div>
