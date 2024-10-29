@@ -71,3 +71,5 @@ It allows users to create, view, resolve, and delete support tickets.
     ```
 2. Run Angular Unit Tests
     ```bash
+    npm run test --prefix .\frontend\
+    ```
