@@ -4,7 +4,6 @@ import { TicketFormComponent } from './ticket-form.component';
 import {of} from 'rxjs';
 import {TicketService} from '../services/ticket.service';
 import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('TicketFormComponent', () => {
@@ -19,7 +18,6 @@ describe('TicketFormComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [TicketFormComponent],
       providers: [provideHttpClient(withInterceptorsFromDi()), { provide: TicketService, useValue: ticketServiceMock }],
-      // imports: [FormsModule, ReactiveFormsModule],
       schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();

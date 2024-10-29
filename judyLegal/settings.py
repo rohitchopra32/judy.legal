@@ -129,7 +129,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",  # Angular app URL during development
+    "http://localhost:4200",  # Angular app URL
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
